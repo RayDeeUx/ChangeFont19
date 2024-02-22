@@ -32,7 +32,8 @@ jobs:
       - name: Build the mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          sdk: 'nightly'
+          sdk: nightly
+          bindings: "RayDeeUx/bindings"
           combine: true
           target: ${{ matrix.config.target }}
       
