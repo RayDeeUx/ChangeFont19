@@ -1,7 +1,7 @@
 # ChangeFont19
 
 Changes Font 19 in Geometry Dash to the official Minecraft font.
-Applies across all graphics settings; use the highest quality settings for best results.
+Applies across all graphics settings; use the highest graphics settings on Windows in Geometry Dash's PlayLayer (where you play levels) for best results.
 
 Based on [this wonderful tweet](https://twitter.com/bitzelyt/status/1351621941443125255) by @[BitzelYT](https://twitter.com/BitzelYT/).
 
