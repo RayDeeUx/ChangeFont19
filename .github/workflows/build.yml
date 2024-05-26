@@ -33,7 +33,8 @@ jobs:
         uses: geode-sdk/build-geode-mod@main
         with:
           sdk: latest
-          bindings: "Alphalaneous/bindings"
+          bindings: "RayDeeUx/bindings"
+          bindings-ref: "createTextLayers"
           combine: true
           target: ${{ matrix.config.target }}
       
