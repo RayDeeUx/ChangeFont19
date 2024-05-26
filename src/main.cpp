@@ -2,6 +2,7 @@
 #include <Geode/modify/GameManager.hpp>
 #include <Geode/modify/CCLabelBMFont.hpp>
 #include <Geode/modify/GJBaseGameLayer.hpp>
+#include <Geode/modify/CCSpriteBatchNode.hpp>
 #include <Geode/cocos/sprite_nodes/CCSpriteBatchNode.h>
 
 using namespace geode::prelude;
