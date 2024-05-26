@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - "**"
+      - "main"
 
 jobs:
   build:
@@ -32,8 +32,8 @@ jobs:
       - name: Build the mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          sdk: latest
-          bindings: "Alphalaneous/bindings"
+          sdk: nightly
+          bindings: "RayDeeUx/bindings"
           combine: true
           target: ${{ matrix.config.target }}
       
