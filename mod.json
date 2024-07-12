@@ -19,6 +19,6 @@
     },
 	"issues": {
 		"url": "https://geode-sdk.org/mods/uproxide.textures",
-		"info": "In case this mod fails to apply the texture pack correctly, please learn how to apply texture packs using Geode's texture loader here."
+		"info": "In case this mod fails to apply the texture pack correctly, please install Uproxide's Texture Workshop mod and download ChangeFont19 from there."
 	}
 }

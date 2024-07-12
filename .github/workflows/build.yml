@@ -35,9 +35,9 @@ jobs:
       - name: Build the mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          sdk: latest
-          bindings: "RayDeeUx/bindings"
-          bindings-ref: "createTextLayers"
+          # sdk: latest
+          # bindings: "RayDeeUx/bindings"
+          # bindings-ref: "createTextLayers"
           combine: true
           target: ${{ matrix.config.target }}
       
