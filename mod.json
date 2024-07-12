@@ -1,30 +1,24 @@
 {
-	"geode": "2.0.0-beta.27",
+	"geode": "3.2.0",
 	"gd":{
-	        "android": "2.205",
-	        "win": "2.204"
-	    },
-	"version": "v1.0.1",
+		"android": "2.206",
+		"mac": "2.206",
+		"win": "2.206"
+	},
+	"version": "v1.1.0",
 	"id": "alphalaneous_raydeeux.changefont19",
 	"name": "ChangeFont19",
-	"developers": ["Alphalaneous", "RayDeeUx"],
+	"developer": "RayDeeUx",
 	"description": "Changes Font 19 in Geometry Dash to the official Minecraft font.",
 	"repository": "https://github.com/RayDeeUx/ChangeFont19",
-	"dependencies": [
-	        {
-	            "id": "geode.node-ids",
-	            "version": ">=v1.11.0",
-	            "importance": "required"
-	        }
-	    ],
 	"resources": {
         "files": [
-			"resources/gjFont18.png",
-			"resources/gjFont18-hd.png",
-			"resources/gjFont18-uhd.png",
-			"resources/gjFont18.fnt",
-			"resources/gjFont18-hd.fnt",
-			"resources/gjFont18-uhd.fnt"
+			"resources/*.fnt",
+			"resources/*.png"
         ]
-    }
+    },
+	"issues": {
+		"url": "https://geode-sdk.org/mods/uproxide.textures",
+		"info": "In case this mod fails to apply the texture pack correctly, please learn how to apply texture packs using Geode's texture loader here."
+	}
 }

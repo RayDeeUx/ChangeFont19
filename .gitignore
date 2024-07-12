@@ -53,3 +53,4 @@ build-*/
 
 # clangd
 .cache/
+/cmake-build-*/
