@@ -20,5 +20,9 @@
 	"issues": {
 		"url": "https://geode-sdk.org/mods/uproxide.textures",
 		"info": "In case this mod fails to apply the texture pack correctly, please install Uproxide's Texture Workshop mod and download ChangeFont19 from there."
+	},
+	"links": {
+		"community": "https://discord.gg/WqZBYdBWZW",
+		"homepage": "https://discord.com/channels/822510988409831486/1206371881222144020"
 	}
 }
