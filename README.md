@@ -12,6 +12,8 @@ Credits:
 Additional thanks to [Magpipe](https://www.youtube.com/channel/UC4NJ3nwh1oG9IeS64vyoPwQ) for publishing Subwoofer Lullaby (the level) and making it easier to test font sizes.
 Thanks to [Mojang](https://mojang.com) for releasing Minecraft and for making such an iconic font.
 
+This [Geode mod](https://geode-sdk.org) is licensed under LGPLv2.
+
 Due to the nature of how the source code was written, v1.0.0 of this mod was not licensed under LGPLv2 (or any other copyleft license).
 However, in the (rare) case that you (still) wish to re-use v1.0.0's source code to any extent, here's the exact wording from Alphalaneous themself:
 
