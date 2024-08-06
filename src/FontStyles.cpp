@@ -53,7 +53,7 @@ class $modify(MenuLayer) {
 		bool result = MenuLayer::init();
 		if (hasCalledAlready || !prefix.empty()) { return result; }
 		hasCalledAlready = true;
-		prefix = Mod::get()->getSettingValue<std::string>("fontStyle");
+		prefix = settingToPrefix.find(Mod::get()->getSettingValue<std::string>("fontStyle"))->second;
 		return result;
 	}
 };
