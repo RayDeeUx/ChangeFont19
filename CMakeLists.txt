@@ -7,7 +7,8 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 project(ChangeFont19 VERSION 1.0.0)
 
 add_library(${PROJECT_NAME} SHARED
-    src/main.cpp
+        src/main.cpp
+        src/FontStyles.cpp
     # Add your cpp files here
 )
 

@@ -5,7 +5,7 @@
 		"mac": "2.206",
 		"win": "2.206"
 	},
-	"version": "v1.1.0",
+	"version": "v1.2.0",
 	"id": "alphalaneous_raydeeux.changefont19",
 	"name": "ChangeFont19",
 	"developer": "RayDeeUx",
@@ -18,6 +18,21 @@
 			"resources/*.png"
         ]
     },
+	"settings": {
+		"fontStyle": {
+			"name": "Font Style",
+			"description": "Set a particular font style for Font 19. <cy>(This option will not apply to Item Counter objects, which fall back to the</c> <cf>Classic</c> <cy>font style.)</c>\n\nGo ahead and <cr>e</c><co>x</c><cs>p</c><cc>e</c><cy>r</c><cg>i</c><cj>m</c><cl>e</c><cb>n</c><ca>t</c>!",
+			"type": "string",
+			"default": "N/A (Classic)",
+			"one-of": [
+				"N/A (Classic)",
+				"Stronger Stroke",
+				"Shadow",
+				"Monospace",
+				"Monospace Shadow"
+			]
+		}
+	},
 	"issues": {
 		"url": "https://geode-sdk.org/mods/uproxide.textures",
 		"info": "In case this mod fails to apply the texture pack correctly, please install Uproxide's Texture Workshop mod and download ChangeFont19 from there."
