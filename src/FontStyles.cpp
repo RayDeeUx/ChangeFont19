@@ -48,6 +48,20 @@ std::string getFileName(std::string_view extension) {
 	return fmt::format("{}gjFont18.{}"_spr, prefix, extension);
 }
 
+$on_mod(Loaded) {
+	log::info("setting: {}", Mod::get()->getSettingValue<std::string>("fontStyle"));
+	log::info("prefix: {}", settingToPrefix.find(Mod::get()->getSettingValue<std::string>("fontStyle"))->second);
+	log::info("[BEFORE SETTING PREFIX] fontName, png: {}", getFileName("png"));
+	log::info("[BEFORE SETTING PREFIX] fontName, fnt: {}", getFileName("fnt"));
+	prefix = settingToPrefix.find(Mod::get()->getSettingValue<std::string>("fontStyle"))->second;
+	log::info("[AFTER SETTING PREFIX] fontName, png: {}", getFileName("png"));
+	log::info("[AFTER SETTING PREFIX] fontName, fnt: {}", getFileName("fnt"));
+	CCFileUtils::get()->addTexturePack(CCTexturePack {
+		.m_id = Mod::get()->getID(), // they're the same ID so it doesnt matter
+		.m_paths = { Mod::get()->getResourcesDir().string() }
+	});
+}
+
 class $modify(MenuLayer) {
 	bool init() {
 		bool result = MenuLayer::init();
@@ -68,7 +82,7 @@ class $modify(GJBaseGameLayer) {
 
 class $modify(CCSpriteBatchNode) {
 	bool initWithTexture(CCTexture2D* texture, unsigned int capacity) {
-		if (!prefix.empty() && isInCreateTextLayers && texture == CCTextureCache::sharedTextureCache()->addImage("gjFont18.png", false)) {
+		if (isInCreateTextLayers && texture == CCTextureCache::sharedTextureCache()->addImage("gjFont18.png", false)) {
 			return CCSpriteBatchNode::initWithTexture(CCTextureCache::sharedTextureCache()->addImage(getFileName("png").c_str(), false), capacity);
 		}
 		return CCSpriteBatchNode::initWithTexture(texture, capacity);
@@ -77,7 +91,9 @@ class $modify(CCSpriteBatchNode) {
 
 class $modify(CCLabelBMFont) {
 	static CCLabelBMFont* createBatched(const char* str, const char* fntFile, CCArray* a, int a1) {
-		if (!prefix.empty() && strcmp(fntFile, "gjFont18.fnt") == 0) { fntFile = getFileName("fnt").c_str(); }
+		if (strcmp(fntFile, "gjFont18.fnt") == 0) {
+			fntFile = getFileName("fnt").c_str();
+		}
 		return CCLabelBMFont::createBatched(str, fntFile, a, a1);
 	}
 };
@@ -86,7 +102,7 @@ class $modify(CCTextureCache) {
 	CCTexture2D* addImage(const char* fileimage, bool p1) {
 		CCTexture2D* ret = nullptr;
 		bool didChange = false;
-		if (!prefix.empty() && strcmp(fileimage, "gjFont18.png") == 0) {
+		if (strcmp(fileimage, "gjFont18.png") == 0) {
 			if (PlayLayer::get() || LevelEditorLayer::get()) {
 				didChange = true;
 				ret = CCTextureCache::addImage(getFileName("png").c_str(), p1);

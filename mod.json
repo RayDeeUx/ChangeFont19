@@ -8,10 +8,10 @@
 	"version": "v1.2.0",
 	"id": "alphalaneous_raydeeux.changefont19",
 	"name": "ChangeFont19",
-	"developer": "RayDeeUx",
+	"developers": ["Alphalaneous", "RayDeeUx"],
 	"description": "Changes Font 19 in Geometry Dash to the official Minecraft font.",
 	"repository": "https://github.com/RayDeeUx/ChangeFont19",
-	"early-load": true,
+	"early-load": false,
 	"resources": {
         "files": [
 			"resources/*.fnt",
@@ -21,7 +21,7 @@
 	"settings": {
 		"fontStyle": {
 			"name": "Font Style",
-			"description": "Set a particular font style for Font 19. <cy>(This option will not apply to Item Counter objects, which fall back to the</c> <cf>Classic</c> <cy>font style.)</c>\n\nGo ahead and <cr>e</c><co>x</c><cs>p</c><cc>e</c><cy>r</c><cg>i</c><cj>m</c><cl>e</c><cb>n</c><ca>t</c>!",
+			"description": "<cp>FULL GAME RESTARTS REQUIRED TO APPLY CHANGES; THIS IS YOUR ONLY WARNING.</c>\n\nSet a particular font style for Font 19.\n<cy>This option will not apply to Item Counter objects; those objects will use the default</c> <cf>Classic</c> <cy>font style.</c>\n\nGo ahead and <cr>e</c><co>x</c><cs>p</c><cc>e</c><cy>r</c><cg>i</c><cj>m</c><cl>e</c><cb>n</c><ca>t</c>!\n<cy>\"Monospace\" styles (courtesy of IdreesInc) are \"bleeding edge\" options and will cause mods and levels that use Font 19 to look a smidge uglier.</c>",
 			"type": "string",
 			"default": "N/A (Classic)",
 			"one-of": [
@@ -32,10 +32,6 @@
 				"Monospace Shadow"
 			]
 		}
-	},
-	"issues": {
-		"url": "https://geode-sdk.org/mods/uproxide.textures",
-		"info": "In case this mod fails to apply the texture pack correctly, please install Uproxide's Texture Workshop mod and download ChangeFont19 from there."
 	},
 	"links": {
 		"community": "https://discord.gg/WqZBYdBWZW",

@@ -23,9 +23,7 @@ However, in the (rare) case that you (still) wish to re-use v1.0.0's source code
 
 For historical purposes: v1.1.0 was licensed under LGPLv2, and v1.2.0 and onwards are licensed under a combination of GPLv3 and OFLv1.1.
 
-*Notice: No portion of this project is affiliated with Minecraft, Mojang, or IdreesInc in any way and is exclusively a fan project. This project bundles `.png` and `.fnt` derivatives of a [fan-made monospace variant](https://github.com/IdreesInc/Monocraft) by [IdreesInc](https://github.com/IdreesInc) which were generated with user input using [Sprite Font Builder](https://www.johnwordsworth.com/projects/sprite-font-builder) by [John Wordsworth](https://www.johnwordsworth.com), but it does not include any assets, font files, or `.ttf` files from the original Minecraft game or from IdreesInc.*
-
-*Less important notice: the monospace font styles are (un)fortunately not truly monospaced due to how [Sprite Font Builder](https://www.johnwordsworth.com/projects/sprite-font-builder) treats `.ttf` files. However, there are still some differences from the original Minecraft font--try them out!*
+*Notice: No portion of this non-profit project is affiliated with Minecraft, Mojang, or IdreesInc in any way and is exclusively a fan project. This project bundles `.png` and `.fnt` derivatives of a [fan-made monospace variant](https://github.com/IdreesInc/Monocraft) by [IdreesInc](https://github.com/IdreesInc) which were generated from user input using [Sprite Font Builder](https://www.johnwordsworth.com/projects/sprite-font-builder) by [John Wordsworth](https://www.johnwordsworth.com), but it does not include any assets, font files, or `.ttf` files from the original Minecraft game or from IdreesInc.*
 
 Before ChangeFont19:
 ![antiDemoOne](https://github.com/RayDeeUx/ChangeFont19/blob/main/antiDemoOne.png)
