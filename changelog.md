@@ -3,7 +3,7 @@
 - Added Font Styles. Styles include:
   - None/Classic (To keep the font style from v1.1.0 and v1.0.0)
   - Stronger Stroke (For levels using Font 19 under incredibly small scales, or easier reading in general)
-  - Minecraft Shadow (Emulating the shadow style from the original Minecraft game while keeping the stroke effect seen in most fonts in Geometry Dash)
+  - Shadow (Emulating the shadow style from the original Minecraft game while keeping the stroke effect seen in most fonts in Geometry Dash)
   - Monospace (Based on assets made by [and courtesy of] [IdreesInc](https://github.com/IdreesInc/Monocraft), licensed under the permissive OFLv1.1)
   - Monospace Shadow (Based on assets made by [and courtesy of] [IdreesInc](https://github.com/IdreesInc/Monocraft), licensed under the permissive OFLv1.1)
   - <cy>*Note that Font Styles will not apply to Item Counter objects in-game due to technical limitations, and will fall back to the default font style seen in versions 1.1.0 and 1.0.0 of this mod.*</c>
