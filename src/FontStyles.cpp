@@ -16,11 +16,13 @@ along with ChangeFont19. If not, see <https://www.gnu.org/licenses/>.
 */
 
 /*
-Source code based on Alpahalaneous' code
+Source code based on and adapted from Alpahalaneous' code
 for the "Pusab Font Fix" feature in Happy Textures.
 Reused with permission granted by GPLv3.
 
-Bindings found by https://github.com/hiimjustin000.
+Bindings found by https://github.com/hiimjustin000,
+and verified from building HappyTextures manually
+and enabling "Pusab Fix" in-game.
 */
 
 #include <Geode/modify/MenuLayer.hpp>
@@ -36,39 +38,34 @@ bool hasCalledAlready = false;
 
 std::map<std::string, std::string> settingToPrefix = {
 	{"N/A (Classic)", ""},
-	{"Stronger Stroke", "stroke_"},
-	{"Shadow", "shadow_"},
-	{"Monospace", "mono_"},
-	{"Monospace Shadow", "monoShadow_"}
+	{"Stronger Stroke", "stroke"},
+	{"Shadow", "shadow"},
+	{"Monospace", "mono"},
+	{"Monospace Shadow", "monoShadow"}
 };
 
 std::string prefix = "";
 
-std::string getFileName(std::string_view extension) {
-	return fmt::format("{}gjFont18.{}"_spr, prefix, extension);
-}
-
 $on_mod(Loaded) {
 	log::info("setting: {}", Mod::get()->getSettingValue<std::string>("fontStyle"));
 	log::info("prefix: {}", settingToPrefix.find(Mod::get()->getSettingValue<std::string>("fontStyle"))->second);
-	log::info("[BEFORE SETTING PREFIX] fontName, png: {}", getFileName("png"));
-	log::info("[BEFORE SETTING PREFIX] fontName, fnt: {}", getFileName("fnt"));
 	prefix = settingToPrefix.find(Mod::get()->getSettingValue<std::string>("fontStyle"))->second;
-	log::info("[AFTER SETTING PREFIX] fontName, png: {}", getFileName("png"));
-	log::info("[AFTER SETTING PREFIX] fontName, fnt: {}", getFileName("fnt"));
-	CCFileUtils::get()->addTexturePack(CCTexturePack {
+	auto directoryVector = std::vector<std::string>{ Mod::get()->getResourcesDir().string() };
+	log::info("MAKING TEXTURE PACK USING DIRECTORY: {}", Mod::get()->getResourcesDir().string());
+	auto texturePack = CCTexturePack {
 		.m_id = Mod::get()->getID(), // they're the same ID so it doesnt matter
-		.m_paths = { Mod::get()->getResourcesDir().string() }
-	});
+		.m_paths = directoryVector
+	};
+	CCFileUtils::get()->addTexturePack(texturePack);
 }
 
 class $modify(MenuLayer) {
 	bool init() {
-		bool result = MenuLayer::init();
-		if (hasCalledAlready || !prefix.empty()) { return result; }
+		if (!MenuLayer::init()) { return false; }
+		if (hasCalledAlready || !prefix.empty()) { return true; }
 		hasCalledAlready = true;
 		prefix = settingToPrefix.find(Mod::get()->getSettingValue<std::string>("fontStyle"))->second;
-		return result;
+		return true;
 	}
 };
 
@@ -83,7 +80,12 @@ class $modify(GJBaseGameLayer) {
 class $modify(CCSpriteBatchNode) {
 	bool initWithTexture(CCTexture2D* texture, unsigned int capacity) {
 		if (isInCreateTextLayers && texture == CCTextureCache::sharedTextureCache()->addImage("gjFont18.png", false)) {
-			return CCSpriteBatchNode::initWithTexture(CCTextureCache::sharedTextureCache()->addImage(getFileName("png").c_str(), false), capacity);
+			const char* toReplace = "gjFont18.png"_spr;
+			if (prefix == "stroke") { toReplace = "strokegjFont18.png"_spr; }
+			else if (prefix == "shadow") { toReplace = "shadowgjFont18.png"_spr; }
+			else if (prefix == "mono") { toReplace = "monogjFont18.png"_spr; }
+			else if (prefix == "monoShadow") { toReplace = "monoShadowgjFont18.png"_spr; }
+			return CCSpriteBatchNode::initWithTexture(CCTextureCache::sharedTextureCache()->addImage(toReplace, false), capacity);
 		}
 		return CCSpriteBatchNode::initWithTexture(texture, capacity);
 	}
@@ -92,7 +94,12 @@ class $modify(CCSpriteBatchNode) {
 class $modify(CCLabelBMFont) {
 	static CCLabelBMFont* createBatched(const char* str, const char* fntFile, CCArray* a, int a1) {
 		if (strcmp(fntFile, "gjFont18.fnt") == 0) {
-			fntFile = getFileName("fnt").c_str();
+			const char* toReplace = "gjFont18.fnt"_spr;
+			if (prefix == "stroke") { toReplace = "strokegjFont18.fnt"_spr; }
+			else if (prefix == "shadow") { toReplace = "shadowgjFont18.fnt"_spr; }
+			else if (prefix == "mono") { toReplace = "monogjFont18.fnt"_spr; }
+			else if (prefix == "monoShadow") { toReplace = "monoShadowgjFont18.fnt"_spr; }
+			fntFile = toReplace;
 		}
 		return CCLabelBMFont::createBatched(str, fntFile, a, a1);
 	}
@@ -105,7 +112,12 @@ class $modify(CCTextureCache) {
 		if (strcmp(fileimage, "gjFont18.png") == 0) {
 			if (PlayLayer::get() || LevelEditorLayer::get()) {
 				didChange = true;
-				ret = CCTextureCache::addImage(getFileName("png").c_str(), p1);
+				const char* toReplace = "gjFont18.png"_spr;
+				if (prefix == "stroke") { toReplace = "strokegjFont18.png"_spr; }
+				else if (prefix == "shadow") { toReplace = "shadowgjFont18.png"_spr; }
+				else if (prefix == "mono") { toReplace = "monogjFont18.png"_spr; }
+				else if (prefix == "monoShadow") { toReplace = "monoShadowgjFont18.png"_spr; }
+				ret = CCTextureCache::addImage(toReplace, p1);
 			}
 		}
 		if (!didChange) {
