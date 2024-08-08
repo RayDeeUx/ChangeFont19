@@ -46,6 +46,22 @@ std::map<std::string, std::string> settingToPrefix = {
 
 std::string prefix = "";
 
+const char* getPng() {
+	if (prefix == "stroke") { return "strokegjFont18.png"_spr; }
+	if (prefix == "shadow") { return "shadowgjFont18.png"_spr; }
+	if (prefix == "mono") { return "monogjFont18.png"_spr; }
+	if (prefix == "monoShadow") { return "monoShadowgjFont18.png"_spr; }
+	return "gjFont18.png"_spr;
+}
+
+const char* getFnt() {
+	if (prefix == "stroke") { return "strokegjFont18.fnt"_spr; }
+	if (prefix == "shadow") { return "shadowgjFont18.fnt"_spr; }
+	if (prefix == "mono") { return "monogjFont18.fnt"_spr; }
+	if (prefix == "monoShadow") { return "monoShadowgjFont18.fnt"_spr; }
+	return "gjFont18.fnt"_spr;
+}
+
 $on_mod(Loaded) {
 	log::info("setting: {}", Mod::get()->getSettingValue<std::string>("fontStyle"));
 	log::info("prefix: {}", settingToPrefix.find(Mod::get()->getSettingValue<std::string>("fontStyle"))->second);
@@ -79,13 +95,8 @@ class $modify(GJBaseGameLayer) {
 
 class $modify(CCSpriteBatchNode) {
 	bool initWithTexture(CCTexture2D* texture, unsigned int capacity) {
-		if (isInCreateTextLayers && texture == CCTextureCache::sharedTextureCache()->addImage("gjFont18.png", false)) {
-			const char* toReplace = "gjFont18.png"_spr;
-			if (prefix == "stroke") { toReplace = "strokegjFont18.png"_spr; }
-			else if (prefix == "shadow") { toReplace = "shadowgjFont18.png"_spr; }
-			else if (prefix == "mono") { toReplace = "monogjFont18.png"_spr; }
-			else if (prefix == "monoShadow") { toReplace = "monoShadowgjFont18.png"_spr; }
-			return CCSpriteBatchNode::initWithTexture(CCTextureCache::sharedTextureCache()->addImage(toReplace, false), capacity);
+		if (!prefix.empty() && isInCreateTextLayers && texture == CCTextureCache::sharedTextureCache()->addImage("gjFont18.png", false)) {
+			return CCSpriteBatchNode::initWithTexture(CCTextureCache::sharedTextureCache()->addImage(getPng(), false), capacity);
 		}
 		return CCSpriteBatchNode::initWithTexture(texture, capacity);
 	}
@@ -93,15 +104,14 @@ class $modify(CCSpriteBatchNode) {
 
 class $modify(CCLabelBMFont) {
 	static CCLabelBMFont* createBatched(const char* str, const char* fntFile, CCArray* a, int a1) {
-		if (strcmp(fntFile, "gjFont18.fnt") == 0) {
-			const char* toReplace = "gjFont18.fnt"_spr;
-			if (prefix == "stroke") { toReplace = "strokegjFont18.fnt"_spr; }
-			else if (prefix == "shadow") { toReplace = "shadowgjFont18.fnt"_spr; }
-			else if (prefix == "mono") { toReplace = "monogjFont18.fnt"_spr; }
-			else if (prefix == "monoShadow") { toReplace = "monoShadowgjFont18.fnt"_spr; }
-			fntFile = toReplace;
-		}
+		if (!prefix.empty() && strcmp(fntFile, "gjFont18.fnt") == 0) { fntFile = getFnt(); }
 		return CCLabelBMFont::createBatched(str, fntFile, a, a1);
+	}
+	void setFntFile(const char* fntFile) {
+		if (!prefix.empty() && strcmp(fntFile, "gjFont18.fnt") == 0 && Mod::get()->getSettingValue<std::string>("fontStyleAggression") == "Levels + Mods") {
+			return CCLabelBMFont::setFntFile(getFnt());
+		}
+		CCLabelBMFont::setFntFile(fntFile);
 	}
 };
 
@@ -109,15 +119,10 @@ class $modify(CCTextureCache) {
 	CCTexture2D* addImage(const char* fileimage, bool p1) {
 		CCTexture2D* ret = nullptr;
 		bool didChange = false;
-		if (strcmp(fileimage, "gjFont18.png") == 0) {
+		if (!prefix.empty() && strcmp(fileimage, "gjFont18.png") == 0) {
 			if (PlayLayer::get() || LevelEditorLayer::get()) {
 				didChange = true;
-				const char* toReplace = "gjFont18.png"_spr;
-				if (prefix == "stroke") { toReplace = "strokegjFont18.png"_spr; }
-				else if (prefix == "shadow") { toReplace = "shadowgjFont18.png"_spr; }
-				else if (prefix == "mono") { toReplace = "monogjFont18.png"_spr; }
-				else if (prefix == "monoShadow") { toReplace = "monoShadowgjFont18.png"_spr; }
-				ret = CCTextureCache::addImage(toReplace, p1);
+				ret = CCTextureCache::addImage(getPng(), p1);
 			}
 		}
 		if (!didChange) {

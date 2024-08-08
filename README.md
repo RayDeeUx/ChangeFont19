@@ -1,12 +1,12 @@
 # ChangeFont19
 
-Changes Font 19 in Geometry Dash to the official Minecraft font (or a fan-made monospace variant, if you want to head in that direction).
+Changes Font 19 in Geometry Dash to the official Minecraft font, with options for other font styles (including a fan-made monospace variant, courtesy of [IdreesInc](https://github.com/IdreesInc) by the OFLv1.1 license).
 Applies across all graphics settings; use the highest graphics settings for best results.
 
-Based on [this wonderful tweet](https://twitter.com/bitzelyt/status/1351621941443125255) by @[BitzelYT](https://twitter.com/BitzelYT/).
+Based on [this wonderful tweet](https://web.archive.org/web/20210909202628/https://twitter.com/bitzelyt/status/1351621941443125255) by @[BitzelYT](https://twitter.com/BitzelYT/).
 
 Credits:
-- [Alphalaneous](https://github.com/Alphalaneous) for the base code from [Happy Textures](https://github.com/Alphalaneous/HappyTextures/), reused with permission in v1.0.0 of this mod (back when Happy Textures lacked a license on GitHub), and reused with permission granted by GPLv3 in v1.2.0 of this mod.
+- [Alphalaneous](https://github.com/Alphalaneous) for the base code from [Happy Textures](https://github.com/Alphalaneous/HappyTextures/), reused with permission in v1.0.0 of this mod (back when Happy Textures lacked a license on GitHub), and re-reused with permission granted by GPLv3 in v1.2.0 of this mod.
 - [YellowCat98](https://github.com/YellowCat98) for suggesting [Sprite Font Builder](https://www.johnwordsworth.com/projects/sprite-font-builder) to generate the resources.
 - [John Wordsworth](https://www.johnwordsworth.com), for making [Sprite Font Builder](https://www.johnwordsworth.com/projects/sprite-font-builder).
 - [IdreesInc](https://github.com/IdreesInc) for the fan-made monospace variant, reused and modified with permission granted by the Open Font License v1.1 (OFLv1.1).

@@ -9,6 +9,7 @@
   - <cy>*Note that Font Styles will not apply to Item Counter objects in-game due to technical limitations, and will fall back to the default font style seen in versions 1.1.0 and 1.0.0 of this mod.*</c>
   - <cy>*Big thank you to [undefined000](https://github.com/undefined000) for diagnosing a crash during this update's development!*</c>
 - Re-license the mod under GPLv3 per re-usage and adaptation of Alphalaneous' `Pusab Font Fix` source code from the latest version of Happy Textures.
+- Re-revise developers list to reflect changes in how Font 19 is changed.
 - Re-generate Classic style assets based on the default character set provided by Sprite Font Builder to minimize crashes. (Potentially. `.fnt` files are still mostly unexplored territory for me, please be gentle!) 
 ## v1.1.0
 - Port to 2.206. Big thanks to CatXus, Aktimoose, ninXout, and hiimjustin000 for helping out with testing!
