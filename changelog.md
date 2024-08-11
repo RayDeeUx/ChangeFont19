@@ -4,13 +4,15 @@
   - None/Classic (To keep the font style from v1.1.0 and v1.0.0)
   - Stronger Stroke (For levels using Font 19 under incredibly small scales, or easier reading in general)
   - Shadow (Emulating the shadow style from the original Minecraft game while keeping the stroke effect seen in most fonts in Geometry Dash)
-  - Monospace (Based on assets made by [and courtesy of] [IdreesInc](https://github.com/IdreesInc/Monocraft), licensed under the permissive OFLv1.1)
-  - Monospace Shadow (Based on assets made by [and courtesy of] [IdreesInc](https://github.com/IdreesInc/Monocraft), licensed under the permissive OFLv1.1)
+  - Monospace (Based on assets made by [and courtesy of] [IdreesInc](https://github.com/IdreesInc/Monocraft), licensed under the permissive [OFLv1.1](https://openfontlicense.org/))
+  - Monospace Shadow (Based on assets made by [and courtesy of] [IdreesInc](https://github.com/IdreesInc/Monocraft), licensed under the permissive [OFLv1.1](https://openfontlicense.org/))
   - <cy>*Note that Font Styles will not apply to Item Counter objects in-game due to technical limitations, and will fall back to the default font style seen in versions 1.1.0 and 1.0.0 of this mod.*</c>
   - <cy>*Big thank you to [undefined000](https://github.com/undefined000) for diagnosing a crash during this update's development!*</c>
-- Re-license the mod under GPLv3 per re-usage and adaptation of Alphalaneous' `Pusab Font Fix` source code from the latest version of Happy Textures.
+- License the font files used for Classic, Stronger Stroke, and Shadow font styles under [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt).
+- Re-license the mod under [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html#license-text) per re-usage and adaptation of Alphalaneous' `Pusab Font Fix` source code from the latest version of Happy Textures.
 - Re-revise developers list to reflect changes in how Font 19 is changed.
-- Re-generate Classic style assets based on the default character set provided by Sprite Font Builder to minimize crashes. (Potentially. `.fnt` files are still mostly unexplored territory for me, please be gentle!) 
+- Re-generate Classic style assets based on the default character set provided by Sprite Font Builder to minimize crashes. (Potentially. `.fnt` files are still mostly unexplored territory for me, please be gentle!)
+- Re-made the logo to reflect new features, using assets lent by Alphalaneous.
 ## v1.1.0
 - Port to 2.206. Big thanks to CatXus, Aktimoose, ninXout, and hiimjustin000 for helping out with testing!
 - macOS support!
