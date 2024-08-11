@@ -8,7 +8,7 @@
 	"version": "v1.2.0",
 	"id": "alphalaneous_raydeeux.changefont19",
 	"name": "ChangeFont19",
-	"developers": ["Alphalaneous", "RayDeeUx"],
+	"developers": ["RayDeeUx", "Alphalaneous"],
 	"description": "Changes Font 19 in Geometry Dash to the official Minecraft font.",
 	"repository": "https://github.com/RayDeeUx/ChangeFont19",
 	"early-load": true,
