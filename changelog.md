@@ -1,4 +1,6 @@
 # ChangeFont19 Changelog
+## v1.3.0
+- Port to 2.2074.
 ## v1.2.0 - Partially Sponsored by Cvolton
 - Added Font Styles. Styles include:
   - None/Classic (To keep the font style from v1.1.0 and v1.0.0)
