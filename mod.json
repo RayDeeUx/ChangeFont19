@@ -1,23 +1,27 @@
 {
-	"geode": "4.0.0-beta.1",
+	"geode": "4.3.1",
 	"gd": {
 		"android": "2.2074",
 		"mac": "2.2074",
-		"win": "2.2074"
+		"win": "2.2074",
+		"ios": "2.2074"
 	},
-	"version": "v1.3.0",
+	"version": "v1.3.1",
 	"id": "alphalaneous_raydeeux.changefont19",
 	"name": "ChangeFont19",
-	"developers": ["RayDeeUx", "Alphalaneous"],
+	"developers": [
+		"RayDeeUx",
+		"Alphalaneous"
+	],
 	"description": "Changes Font 19 in Geometry Dash to the official Minecraft font.",
 	"repository": "https://github.com/RayDeeUx/ChangeFont19",
 	"early-load": true,
 	"resources": {
-        "files": [
+		"files": [
 			"resources/*.fnt",
 			"resources/*.png"
-        ]
-    },
+		]
+	},
 	"settings": {
 		"fontStyle": {
 			"name": "Font Style",
