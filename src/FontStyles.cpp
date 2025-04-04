@@ -25,7 +25,6 @@ and verified from building HappyTextures manually
 and enabling "Pusab Fix" in-game.
 */
 
-#include <Geode/modify/MenuLayer.hpp>
 #include <Geode/modify/CCLabelBMFont.hpp>
 #include <Geode/modify/GJBaseGameLayer.hpp>
 #include <Geode/modify/CCSpriteBatchNode.hpp>
@@ -33,10 +32,9 @@ and enabling "Pusab Fix" in-game.
 
 using namespace geode::prelude;
 
-bool isInCreateTextLayers = false;
-bool hasCalledAlready = false;
+static bool isInCreateTextLayers = false;
 
-std::map<std::string, std::string> settingToPrefix = {
+const static std::unordered_map<std::string, std::string> settingToPrefix = {
 	{"N/A (Classic)", ""},
 	{"Stronger Stroke", "stroke"},
 	{"Shadow", "shadow"},
@@ -44,46 +42,38 @@ std::map<std::string, std::string> settingToPrefix = {
 	{"Monospace Shadow", "monoShadow"}
 };
 
-std::string prefix = "";
+static std::string prefix;
 
 const char* getPng() {
-	if (prefix == "stroke") { return "strokegjFont18.png"_spr; }
-	if (prefix == "shadow") { return "shadowgjFont18.png"_spr; }
-	if (prefix == "mono") { return "monogjFont18.png"_spr; }
-	if (prefix == "monoShadow") { return "monoShadowgjFont18.png"_spr; }
+	if (prefix == "stroke") return "strokegjFont18.png"_spr;
+	if (prefix == "shadow") return "shadowgjFont18.png"_spr;
+	if (prefix == "mono") return "monogjFont18.png"_spr;
+	if (prefix == "monoShadow") return "monoShadowgjFont18.png"_spr;
 	return "gjFont18.png"_spr;
 }
 
 const char* getFnt() {
-	if (prefix == "stroke") { return "strokegjFont18.fnt"_spr; }
-	if (prefix == "shadow") { return "shadowgjFont18.fnt"_spr; }
-	if (prefix == "mono") { return "monogjFont18.fnt"_spr; }
-	if (prefix == "monoShadow") { return "monoShadowgjFont18.fnt"_spr; }
+	if (prefix == "stroke") return "strokegjFont18.fnt"_spr;
+	if (prefix == "shadow") return "shadowgjFont18.fnt"_spr;
+	if (prefix == "mono") return "monogjFont18.fnt"_spr;
+	if (prefix == "monoShadow") return "monoShadowgjFont18.fnt"_spr;
 	return "gjFont18.fnt"_spr;
 }
 
 $on_mod(Loaded) {
-	log::info("setting: {}", Mod::get()->getSettingValue<std::string>("fontStyle"));
-	log::info("prefix: {}", settingToPrefix.find(Mod::get()->getSettingValue<std::string>("fontStyle"))->second);
-	prefix = settingToPrefix.find(Mod::get()->getSettingValue<std::string>("fontStyle"))->second;
-	auto directoryVector = std::vector<std::string>{ Mod::get()->getResourcesDir().string() };
+	const std::string& fontStyle = Mod::get()->getSettingValue<std::string>("fontStyle");
+	const std::string& resourcesDir = Mod::get()->getResourcesDir().string();
+	prefix = settingToPrefix.contains(fontStyle) ? settingToPrefix.find(fontStyle)->second : "";
+	log::info("setting: {}", fontStyle);
+	log::info("prefix: {}", prefix);
 	log::info("MAKING TEXTURE PACK USING DIRECTORY: {}", Mod::get()->getResourcesDir().string());
-	auto texturePack = CCTexturePack {
+	auto directoryVector = std::vector<std::string>{ resourcesDir };
+	const auto texturePack = CCTexturePack {
 		.m_id = Mod::get()->getID(), // they're the same ID so it doesnt matter
 		.m_paths = directoryVector
 	};
 	CCFileUtils::get()->addTexturePack(texturePack);
 }
-
-class $modify(MenuLayer) {
-	bool init() {
-		if (!MenuLayer::init()) { return false; }
-		if (hasCalledAlready || !prefix.empty()) { return true; }
-		hasCalledAlready = true;
-		prefix = settingToPrefix.find(Mod::get()->getSettingValue<std::string>("fontStyle"))->second;
-		return true;
-	}
-};
 
 class $modify(GJBaseGameLayer) {
 	void createTextLayers() {
@@ -104,30 +94,30 @@ class $modify(CCSpriteBatchNode) {
 
 class $modify(CCLabelBMFont) {
 	static CCLabelBMFont* createBatched(const char* str, const char* fntFile, CCArray* a, int a1) {
-		if (!prefix.empty() && strcmp(fntFile, "gjFont18.fnt") == 0) { fntFile = getFnt(); }
+		if (!prefix.empty() && static_cast<std::string>(fntFile) == "gjFont18.fnt") fntFile = getFnt();
 		return CCLabelBMFont::createBatched(str, fntFile, a, a1);
 	}
+	#ifndef GEODE_IS_IOS
 	void setFntFile(const char* fntFile) {
 		if (!prefix.empty() && strcmp(fntFile, "gjFont18.fnt") == 0 && Mod::get()->getSettingValue<std::string>("fontStyleAggression") == "Levels + Mods") {
 			return CCLabelBMFont::setFntFile(getFnt());
 		}
 		CCLabelBMFont::setFntFile(fntFile);
 	}
+	#endif
 };
 
 class $modify(CCTextureCache) {
-	CCTexture2D* addImage(const char* fileimage, bool p1) {
+	CCTexture2D* addImage(const char* fileImage, bool p1) {
 		CCTexture2D* ret = nullptr;
 		bool didChange = false;
-		if (!prefix.empty() && strcmp(fileimage, "gjFont18.png") == 0) {
-			if (PlayLayer::get() || LevelEditorLayer::get()) {
+		if (!prefix.empty() && static_cast<std::string>(fileImage) == "gjFont18.png") {
+			if (GJBaseGameLayer::get()) {
 				didChange = true;
 				ret = CCTextureCache::addImage(getPng(), p1);
 			}
 		}
-		if (!didChange) {
-			ret = CCTextureCache::addImage(fileimage, p1);
-		}
+		if (!didChange) ret = CCTextureCache::addImage(fileImage, p1);
 		return ret;
 	}
 };

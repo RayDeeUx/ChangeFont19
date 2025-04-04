@@ -44,7 +44,8 @@
 			"one-of": [
 				"Levels Only (Default)",
 				"Levels + Mods"
-			]
+			],
+			"platforms": ["windows", "mac", "android"]
 		}
 	},
 	"links": {
