@@ -25,7 +25,7 @@
 	"settings": {
 		"fontStyle": {
 			"name": "Font Style",
-			"description": "<cp>FULL GAME RESTARTS REQUIRED TO APPLY CHANGES CONSISTENTLY. THIS IS YOUR ONLY WARNING.</c>\n\nSet a particular font style for Font 19.\n<cy>This option will not apply to Item Counter objects; those objects will use the default</c> <cf>Classic</c> <cy>font style.</c>\n\nGo ahead and <cr>e</c><co>x</c><cs>p</c><cc>e</c><cy>r</c><cg>i</c><cj>m</c><cl>e</c><cb>n</c><ca>t</c>!\n<cy>\"Monospace\" styles (courtesy of IdreesInc) are \"bleeding edge\"/experimental options and will cause mods and levels that use Font 19 to look a smidge uglier.</c>",
+			"description": "<c_>FULL GAME RESTART REQUIRED TO APPLY CHANGES. THIS IS YOUR ONLY WARNING.</c>\n\nSet a particular font style for Font 19.\n<cy>Item Counter objects will keep the default</c> <cf>Classic</c> <cy>font style.</c>\n\nGo ahead and <cr>e</c><co>x</c><cs>p</c><cc>e</c><cy>r</c><cg>i</c><cj>m</c><cl>e</c><cb>n</c><ca>t</c>!\n<cy>\"Monospace\" styles (courtesy of IdreesInc) are \"bleeding edge\"/experimental options and are a smidge uglier.</c>",
 			"type": "string",
 			"default": "N/A (Classic)",
 			"one-of": [
@@ -38,7 +38,7 @@
 		},
 		"fontStyleAggression": {
 			"name": "Font Style Aggression",
-			"description": "Adjust how aggressively font styles from ChangeFont19 are applied <cy>AFTER the game has left the loading screen (thanks to technical limitations)</c>.\n<cg>Changing this option does not require restarting the game.</c>\n<cy>Some texts may keep the default</c> <cf>Classic</c> <cy>style for safety reasons.</c>\n\nGo ahead and <cr>e</c><co>x</c><cs>p</c><cc>e</c><cy>r</c><cg>i</c><cj>m</c><cl>e</c><cb>n</c><ca>t</c>!\n<cy>As a reminder from the \"Font Style\" setting:\n\"Monospace\" styles (courtesy of IdreesInc) are \"bleeding edge\"/experimental options and will cause mods and levels that use Font 19 to look a smidge uglier.</c>",
+			"description": "Adjust how aggressively font styles from ChangeFont19 are applied <cy>AFTER the game has finished loading (thanks to technical limitations)</c>.\n<cg>Changing this option does not require restarting the game.</c>\n<cy>Some texts may keep the default</c> <cf>Classic</c> <cy>style for safety reasons.</c>\n\nGo ahead and <cr>e</c><co>x</c><cs>p</c><cc>e</c><cy>r</c><cg>i</c><cj>m</c><cl>e</c><cb>n</c><ca>t</c>!\n<cy>\"Monospace\" styles (courtesy of IdreesInc) are \"bleeding edge\"/experimental options and are a smidge uglier.</c>",
 			"type": "string",
 			"default": "Levels Only (Default)",
 			"one-of": [
