@@ -1,7 +1,7 @@
 # ChangeFont19 Changelog
 ## v1.3.1
-- iPhone and iPads (and maybe iPods?) are now able to enjoy ChangeFont19!
-  - However, iOS Geode users see the fallback Font 19 included in this mod more often compared to macOS Geode users.
+- Experimental iOS support.
+  - iOS Geode users see the fallback Font 19 included in this mod more often compared to macOS Geode users.
 ## v1.3.0
 - Port to 2.2074.
 ## v1.2.0 - Partially Sponsored by Cvolton
