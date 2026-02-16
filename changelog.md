@@ -1,4 +1,6 @@
 # ChangeFont19 Changelog
+## v1.3.2
+- Port to GD 2.2081.
 ## v1.3.1
 - Experimental iOS support.
   - iOS Geode users see the fallback Font 19 included in this mod more often compared to macOS Geode users.
