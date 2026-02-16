@@ -1,5 +1,5 @@
 # ChangeFont19 Changelog
-## v1.3.2
+## v1.3.2 and v1.3.3
 - Port to GD 2.2081.
 ## v1.3.1
 - Experimental iOS support.
