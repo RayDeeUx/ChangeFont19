@@ -62,11 +62,11 @@ const char* getFnt() {
 
 $on_mod(Loaded) {
 	const std::string& fontStyle = Mod::get()->getSettingValue<std::string>("fontStyle");
-	const std::string& resourcesDir = Mod::get()->getResourcesDir().string();
+	const std::string& resourcesDir = geode::utils::string::pathToString(Mod::get()->getResourcesDir());
 	prefix = settingToPrefix.contains(fontStyle) ? settingToPrefix.find(fontStyle)->second : "";
 	log::info("setting: {}", fontStyle);
 	log::info("prefix: {}", prefix);
-	log::info("MAKING TEXTURE PACK USING DIRECTORY: {}", Mod::get()->getResourcesDir().string());
+	log::info("MAKING TEXTURE PACK USING DIRECTORY: {}", resourcesDir);
 	auto directoryVector = std::vector<std::string>{ resourcesDir };
 	const auto texturePack = CCTexturePack {
 		.m_id = Mod::get()->getID(), // they're the same ID so it doesnt matter
